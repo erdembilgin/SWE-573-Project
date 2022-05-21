@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+
+Create Space
+
+{% endblock %}
+
+
+{% block content %}
+
+<center>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-outline mb-4 w-50 h-50 p-3">
+            <label class="form-label" for="form1Example1">Title</label>
+            <input type="text" id="form1Example1" name="title" class="form-control" />
+          
+        </div>
+      
+        <div class="form-outline mb-4 w-50 h-50 p-3">
+            <label class="form-label" for="form1Example2">Description</label>
+            <textarea  name="description" id="form1Example2" class="form-control" ></textarea>
+        </div>
+
+        <div class="form-outline mb-4 w-50 h-50 p-3">
+            <label class="form-label" for="form1Example2">Image</label>
+            <input type="file" name="banner" id="form1Example2" class="form-control" />
+        </div>
+
+
+        <div class="form-outline mb-4 w-50 h-50 p-3">
+            <label class="form-label" for="form1Example2">Tags</label>
+            <textarea  name="tags" id="form1Example2" class="form-control" ></textarea>
+        </div>
+            <br>
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block">Create</button>
+        
+      </form>
+    </center>
+
+{% endblock %}

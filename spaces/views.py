@@ -42,3 +42,20 @@ class LeaveSpace(View):
             print(desired_space.user.all())
             return redirect("/spaces/home")
         return redirect("/")
+    
+class CreateSpace(View):
+    template_name = "spaces/newspace.html"
+    
+    def get(self, request):
+        if request.user.is_authenticated:
+            return render(request, self.template_name)
+        return redirect("/")
+    
+    def post(self, request):
+        title = request.POST['title']
+        description = request.POST['description']
+        tags = request.POST['tags']
+        img = request.FILES['banner']
+        
+        Space.objects.create(title=title, description=description, tags=tags, banner=img)
+        return redirect("/spaces/home")
