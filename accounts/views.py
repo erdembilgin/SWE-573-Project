@@ -1,4 +1,3 @@
-from multiprocessing import context
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views import View
@@ -16,6 +15,8 @@ class LoginView(View):
     template_name = "accounts/login.html"
     
     def get(self, request):
+        if request.user.is_authenticated:
+            return redirect("spaces/home")
         return render(request, self.template_name)
     
     def post(self, request):
@@ -28,7 +29,7 @@ class LoginView(View):
         else:
             return redirect("/")
         print(user)
-        return HttpResponse("You are looged in")
+        return redirect("spaces/home")
     
 class LogoutView(View):
     
@@ -40,6 +41,8 @@ class RegisterView(View):
     template_name = "accounts/signup.html"
     
     def get(self, request):
+        if request.user.is_authenticated:
+            return redirect("spaces/home")
         return render(request, self.template_name)
     
     def post(self, request):
