@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views import View
@@ -57,4 +58,33 @@ class RegisterView(View):
         print(request.POST['nickname'])
         print(request.POST['email'])
         print(request.POST['pwd'])
-        return HttpResponse("sign up successful")
+        return redirect("/")
+    
+class Profile(View):
+    template_name = "accounts/profile.html"
+    
+    def get(self, request):
+        if request.user.is_authenticated:
+            context = dict()
+            context['user'] = request.user
+            return render(request, self.template_name, context)
+        return redirect("/")
+
+class ChangePassword(View):
+    template_name = "accounts/changepassword.html"
+    
+    def get(self, request):
+        if request.user.is_authenticated:
+            return render(request, self.template_name)
+    
+        return redirect("/")
+    
+    def post(self, request):
+        oldpwd = request.POST['oldpwd']
+        newpwd = request.POST['newpwd']
+        
+        if request.user.check_password(oldpwd):
+            request.user.set_password(newpwd)
+            request.user.save()
+            return redirect("/profile")
+        return redirect("/")

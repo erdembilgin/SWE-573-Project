@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+
+Sign Up
+
+{% endblock %}
+
+
+{% block content %}
+
+<center>
+      <div class="form-outline mb-4 w-25 p-3">
+        <img src="/media/{{user.profile_photo}}" width="150px" alt="" class="rounded-circle" />
+      </div>
+      <div class="form-outline mb-4 w-25 p-3">
+          <label for="">Nickname: {{user.nick_name}}</label>
+      </div>
+      <div class="form-outline mb-4 w-25 p-3">
+        <label for="">Email: {{user.email}}</label>
+    </div>
+    
+    <div class="form-outline mb-4 w-25 p-3">
+        <a href="/change-password">Change Password</a>
+    </div>
+    </center>    
+    
+    
+{% endblock %}
