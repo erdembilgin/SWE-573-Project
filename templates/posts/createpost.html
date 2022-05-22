@@ -11,43 +11,42 @@ Posts
 {% block content %}
 
 <center>
-    <form method="post" enctype="multipart/form-data">
-      {% csrf_token %}
+  <h2>Create a new post</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
 
-      <div class="form-outline mb-4 w-25 p-3">
-        <label class="form-label" for="form1Example2">Image</label>
-        <input type="file" name="img"/>
-      </div>
+    <!-- Title Input -->
+    <div class="row mb-4 w-25 p-3">
+      <div class="col">
+        <div class="form-outline">
 
-      <div class="form-outline mb-4 w-25 p-3">
-        <label class="form-label" for="form1Example2">Video</label>
-        <input type="file" name="video"/>
-      </div>
-
-        <!-- Title Input -->
-        <div class="row mb-4 w-25 p-3">
-          <div class="col">
-            <div class="form-outline">
-              
-              <label class="form-label" for="form3Example1">Title</label>
-              <input type="text" name="title" id="form3Example1" class="form-control" />
-            </div>
-          </div>
+          <label class="form-label" for="form3Example1">Title</label>
+          <input type="text" name="title" id="form3Example1" class="form-control" />
         </div>
-      
-        <!-- Description input -->
-        <div class="form-outline mb-4 w-25 p-3">
-          
-          <label class="form-label" for="form3Example3">Description</label>
-          <textarea name="description" id="" cols="30" rows="10"></textarea>
-        </div>
-      
-      
-      
-        <!-- Submit button -->
-        <button type="submit" class="btn btn-primary btn-block mb-4">Create Post</button>
-      
-      </form>
-    </center>
+      </div>
+    </div>
+
+    <!-- Description input -->
+    <div class="form-outline mb-4 w-25 p-3">
+
+      <label class="form-label" for="form3Example3">Description</label>
+      <textarea name="description" id="" cols="30" rows="10"></textarea>
+    </div>
+
+    <div class="form-outline mb-4 w-25 p-3">
+      <label class="form-label" for="form1Example2">Image:Optional</label>
+      <input type="file" name="img" />
+    </div>
+
+    <div class="form-outline mb-4 w-25 p-3">
+      <label class="form-label" for="form1Example2">Video:Optional</label>
+      <input type="file" name="video" />
+    </div>
+
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary btn-block mb-4">Create Post</button>
+
+  </form>
+</center>
 
 {% endblock %}

@@ -4,7 +4,9 @@ from django.http import HttpResponse
 from django.views import View
 from .models import User
 from django.contrib.auth import authenticate, login, logout
-
+from spaces.models import (
+    Space
+)
 
 
 # Create your views here.
@@ -28,7 +30,9 @@ class LoginView(View):
         if user is not None:
             login(request, user)
         else:
-            return redirect("/")
+            context = dict()
+            context['error'] = "username or password was incorrect"
+            return render(request, self.template_name, context)
         print(user)
         return redirect("spaces/home")
     
@@ -67,6 +71,7 @@ class Profile(View):
         if request.user.is_authenticated:
             context = dict()
             context['user'] = request.user
+            context['spaces'] = Space.objects.filter(user=request.user)
             return render(request, self.template_name, context)
         return redirect("/")
 
@@ -87,4 +92,6 @@ class ChangePassword(View):
             request.user.set_password(newpwd)
             request.user.save()
             return redirect("/profile")
-        return redirect("/")
+        context = dict()
+        context['error'] = "old password was incorrect"
+        return render(request, self.template_name, context)

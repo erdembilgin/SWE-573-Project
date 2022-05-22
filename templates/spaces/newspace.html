@@ -11,6 +11,7 @@ Create Space
 {% block content %}
 
 <center>
+    <h2>Create a new space</h2>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-outline mb-4 w-50 h-50 p-3">
@@ -32,7 +33,7 @@ Create Space
 
         <div class="form-outline mb-4 w-50 h-50 p-3">
             <label class="form-label" for="form1Example2">Tags</label>
-            <textarea  name="tags" id="form1Example2" class="form-control" ></textarea>
+            <textarea placeholder="You can add the related tags and seperate them by commas" name="tags" id="form1Example2" class="form-control" ></textarea>
         </div>
             <br>
         <!-- Submit button -->

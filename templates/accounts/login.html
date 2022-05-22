@@ -9,7 +9,10 @@ Login
 
 
 {% block content %}
+
+
     <center>
+        <p>{{error}}</p>
     <form method="post">
         {% csrf_token %}
         <!-- Email input -->
@@ -28,7 +31,7 @@ Login
         <!-- Submit button -->
         <button type="submit" class="btn btn-primary btn-block">Sign in</button>
         <br><br>
-        <a class="btn btn-primary btn-block " href="/sign-up">Sign Up</a>
+        <a class="btn btn-success btn-block " href="/sign-up">Sign Up</a>
       </form>
     </center>
 

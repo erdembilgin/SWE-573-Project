@@ -10,10 +10,6 @@ Posts
 
 {% block content %}
 
-{% if button %}
-<a href="/posts/create-post/{{spaceid}}" class="btn btn-primary">Create Post</a>
-{% endif %}
-
 <div class="row">
   {% for post in posts %}
   <div class="card mt-3 " style="width: 18rem;">
@@ -26,15 +22,23 @@ Posts
     </video>
     {% endif %}
     <div class="card-body">
-      <h5 class="card-title"><a href="/posts/postdetail/{{post.id}}">{{post.title}}</a></h5>
+      <h5 class="card-title"><a href="/posts/postdetail/{{post.id}}" target="_blank">{{post.title}}</a></h5>
       <p class="card-text">{{post.description}}</p>
     </div>
-    {% endfor %}
-  </div>
 
+  </div>
+  {% endfor %}
 </div>
 
+<br><br>
+
+<center>
+  {% if button %}
+  <a href="/posts/create-post/{{spaceid}}" class="btn btn-primary">Create Post</a>
+  {% endif %}
+</center>
 
 
 
-  {% endblock %}
+
+{% endblock %}

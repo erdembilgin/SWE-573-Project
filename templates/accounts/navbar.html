@@ -7,30 +7,36 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                
+
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/spaces/create-space">New Space</a>
-                  </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        {% if user.is_authenticated %}
-                        <li><a class="dropdown-item" href="/logout">Logout</a></li>
-                        <li><a class="dropdown-item" href="/profile">Profile</a></li>
-                        {% endif %}
-                    </ul>
                 </li>
+
 
             </ul>
             <div class="position-absolute end-0">
                 <a class="navbar-brand" href="#">
-                    <img src="/media/{{user.profile_photo}}" class="rounded-circle" alt="anonymous" width="30" height="24"
-                        class="d-inline-block align-text-top">
+                    <img src="/media/{{user.profile_photo}}" class="rounded-circle" onerror="this.style.display='none'"
+                        width="30" height="24" class="d-inline-block align-text-top">
                 </a>
+                <div class="position-absolute end-0">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Dropdown
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                {% if user.is_authenticated %}
+                                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                                <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                                {% endif %}
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
