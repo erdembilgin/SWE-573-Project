@@ -15,7 +15,6 @@ Posts
     {% if post.video %}
     <video width="320" height="240" controls class="card-img-top">
         <source src="/media/{{post.video}}" type="video/mp4">
-        <!-- <source src="movie.ogg" type="video/ogg"> -->
         Your browser does not support the video tag.
     </video>
     {% endif %}
@@ -29,18 +28,26 @@ Posts
 
 <h4>Comments</h4>
 {% for comment in comments %}
-<div class="border border-3">
-    <p>
-        {{comment.text}}
-    </p>
-    <div class="position-absolute end-0">
-        user:{{comment.user.nick_name}}
+<div class="border border-2 position-relative">
+    <div class="ps-3">
+        <p>
+
+            {{comment.text}}
+        </p>
     </div>
-    <a href="/posts/like/{{comment.id}}" class="">
-        likes:{{comment.likes.all.count}}
-    </a>
-    <div class="">
-        <a href="/posts/dislike/{{comment.id}}"> dislikes:{{comment.dislikes.all.count}}</a>
+    <div class="position-absolute end-0">
+        <p class="pe-2">
+        {{comment.user.nick_name}}
+    </p>
+    </div>
+    <div class="ps-3">
+        <a href="/posts/like/{{comment.id}}" class="">
+            <i class="fa fa-thumbs-up">{{comment.likes.all.count}}</i>
+        </a>
+    </div>
+    <div class="ps-3">
+        <a href="/posts/dislike/{{comment.id}}"><i class="fa fa-thumbs-down"
+                style="color:red">{{comment.dislikes.all.count}}</i></a>
     </div>
 </div>
 <br>
@@ -49,15 +56,14 @@ Posts
 
 <form method="post">
     {% csrf_token %}
-    <!-- Email input -->
     <div class="form-outline mb-4 w-25 p-3">
         <label class="form-label" for="form1Example1">Comment</label>
         <textarea name="newcomment" id="" cols="100" rows="10"></textarea>
-      
+
     </div>
-  
+
     <!-- Submit button -->
     <button type="submit" class="btn btn-primary btn-block">Submit</button>
-  </form>
+</form>
 
 {% endblock %}

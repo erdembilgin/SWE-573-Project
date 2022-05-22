@@ -13,7 +13,7 @@ Homepage
 <div class="row">
     {% for space in spaces %}
     <div class="card mt-3 " style="width: 18rem;">
-        <img src="/media/{{space.banner}}" class="card-img-top" alt="">
+        <img src="/media/{{space.banner}}" class="card-img-top" height="100px" alt="">
         <div class="card-body">
             <h5 class="card-title"><a href="/posts/{{space.id}}/">{{space.title}}</a></h5>
             {% if user in space.user.all %}
@@ -23,12 +23,6 @@ Homepage
             {% endif %}
         </div>
     </div>
-
-
-
-    <!-- <div class ="col-4">kj</div>
- <div class ="col-4">jk</div>
- <div class ="col-4">lk</div> -->
 
     {% endfor %}
 </div>

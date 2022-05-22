@@ -23,7 +23,6 @@ class LoginView(View):
         return render(request, self.template_name)
     
     def post(self, request):
-        print("in post")
         email = request.POST['email']
         pwd = request.POST['pwd']
         user = authenticate(email=email, password=pwd)
@@ -33,7 +32,6 @@ class LoginView(View):
             context = dict()
             context['error'] = "username or password was incorrect"
             return render(request, self.template_name, context)
-        print(user)
         return redirect("spaces/home")
     
 class LogoutView(View):
@@ -58,10 +56,6 @@ class RegisterView(View):
         user = User.objects.create(email=email, nick_name=nickname, profile_photo=image)
         user.set_password(pwd)
         user.save()
-        print(request.FILES['avatar'])
-        print(request.POST['nickname'])
-        print(request.POST['email'])
-        print(request.POST['pwd'])
         return redirect("/")
     
 class Profile(View):

@@ -11,45 +11,40 @@ Sign Up
 {% block content %}
 
 <center>
-      <div class="form-outline mb-4 w-25 p-3">
-        <img src="/media/{{user.profile_photo}}" width="150px" alt="" class="rounded-circle" />
-      </div>
-      <div class="form-outline mb-4 w-25 p-3">
-          <label for="">Nickname: {{user.nick_name}}</label>
-      </div>
-      <div class="form-outline mb-4 w-25 p-3">
-        <label for="">Email: {{user.email}}</label>
-    </div>
-    
-    <div class="form-outline mb-4 w-25 p-3">
-        <a href="/change-password">Change Password</a>
-    </div>
-
-
-    </center>    
-
-    <div class="row">
-      {% for space in spaces %}
-      <div class="card mt-3 " style="width: 18rem;">
-          <img src="/media/{{space.banner}}" class="card-img-top" alt="">
-          <div class="card-body">
-              <h5 class="card-title"><a href="/posts/{{space.id}}/">{{space.title}}</a></h5>
-              {% if user in space.user.all %}
-              <a href="/spaces/leavespace/{{space.id}}" class="card-title">Leave Space</a>
-              {% else %}
-              <a href="/spaces/joinspace/{{space.id}}" class="card-title">Join Space</a>
-              {% endif %}
-          </div>
-      </div>
-  
-  
-  
-      <!-- <div class ="col-4">kj</div>
-   <div class ="col-4">jk</div>
-   <div class ="col-4">lk</div> -->
-  
-      {% endfor %}
+  <div class="form-outline mb-4 w-25 p-3">
+    <img src="/media/{{user.profile_photo}}" width="150px" alt="" class="rounded-circle" />
   </div>
-    
-    
+  <div class="form-outline mb-4 w-25 p-3">
+    <label for="">Nickname: {{user.nick_name}}</label>
+  </div>
+  <div class="form-outline mb-4 w-25 p-3">
+    <label for="">Email: {{user.email}}</label>
+  </div>
+
+  <div class="form-outline mb-4 w-25 p-3">
+    <a href="/change-password">Change Password</a>
+  </div>
+
+
+</center>
+
+<div class="row">
+  {% for space in spaces %}
+  <div class="card mt-3 " style="width: 18rem;">
+    <img src="/media/{{space.banner}}" class="card-img-top" alt="">
+    <div class="card-body">
+      <h5 class="card-title"><a href="/posts/{{space.id}}/">{{space.title}}</a></h5>
+      {% if user in space.user.all %}
+      <a href="/spaces/leavespace/{{space.id}}" class="card-title">Leave Space</a>
+      {% else %}
+      <a href="/spaces/joinspace/{{space.id}}" class="card-title">Join Space</a>
+      {% endif %}
+    </div>
+  </div>
+
+
+  {% endfor %}
+</div>
+
+
 {% endblock %}
