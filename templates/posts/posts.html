@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+
+Posts
+
+{% endblock %}
+
+
+{% block content %}
+
+
+
+  <div class="row">
+    {% for post in posts %}
+    <div class="card mt-3 " style="width: 18rem;">
+        <img src="/media/{{post.image}}" class="card-img-top" alt="">
+        {% if post.video %}
+        <video width="320" height="240" controls class="card-img-top">
+            <source src="/media/{{post.video}}" type="video/mp4">
+            <!-- <source src="movie.ogg" type="video/ogg"> -->
+          Your browser does not support the video tag.
+          </video>
+          {% endif %}
+        <div class="card-body">
+            <h5 class="card-title"><a href="/posts/postdetail/{{post.id}}">{{post.title}}</a></h5>
+            <p class="card-text">{{post.description}}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+
+  
+
+
+
+{% endblock %}

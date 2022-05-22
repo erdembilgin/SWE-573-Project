@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     
     # custom apps
     'accounts',
-    'spaces'
+    'spaces',
+    'posts',
 ]
 
 MIDDLEWARE = [
