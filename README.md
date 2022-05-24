@@ -1,4 +1,4 @@
-# Auth APIs
+# Co-learning
 
 ## Getting Started
 - Clone repository : `git clone https://github.com/erdembilgin/SWE-573-Project.git`
