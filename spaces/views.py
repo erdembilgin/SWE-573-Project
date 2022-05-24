@@ -22,6 +22,15 @@ class HomeView(View):
             return render(request, self.template_name, context)    
         return redirect("/")
     
+    def post(self, request):
+        if request.user.is_authenticated:
+            search_word = request.POST['searchspaces']
+            context = dict()
+            context['spaces'] = Space.objects.filter(title=search_word)
+            return render(request, self.template_name, context)    
+        
+        return redirect("/")
+    
 class JoinSpace(View):
     
     def get(self, request, pk):

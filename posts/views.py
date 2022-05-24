@@ -31,6 +31,20 @@ class ListPosts(View):
             return render(request, self.template_name, context)
         return redirect("/")
     
+    def post(self, request, spaceid):
+        if request.user.is_authenticated:
+            search_word = request.POST['searchposts']
+            context = dict()
+            print("this is space id ", spaceid)
+            context['posts'] = Post.objects.filter(title=search_word, space=spaceid)
+            spaceuser = Space.objects.get(id=spaceid).user.all()
+            if request.user in spaceuser:
+                context['button'] = True
+                context['spaceid'] = spaceid
+            return render(request, self.template_name, context)    
+        
+        return redirect("/")
+    
 class PostDetail(View):
     template_name = "posts/postdetail.html"
     
