@@ -14,7 +14,8 @@ services:
 #       - ./data/db:/var/lib/postgresql/data
   web:
     build: .
-    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    # command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    command: "gunicorn --bind 0.0.0.0:8000 co_learning_site.wsgi:application "
     volumes:
       - .:/code
     ports:
