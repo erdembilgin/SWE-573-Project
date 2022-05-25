@@ -15,7 +15,7 @@ services:
   web:
     build: .
     # command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
-    command: "gunicorn --bind 0.0.0.0:8000 co_learning_site.wsgi:application "
+    command: bash -c "sudo mkdir /var/log/gunicorn && sudo supervisorctl reread && sudo supervisorctl update && sudo ln django.conf /etc/nginx/sites-enabled/ && sudo nginx  "
     volumes:
       - .:/code
     ports:
