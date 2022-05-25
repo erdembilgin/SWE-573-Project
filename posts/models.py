@@ -1,5 +1,3 @@
-from pyexpat import model
-from tkinter.tix import Tree
 from django.db import models
 from spaces.models import (
     Space
