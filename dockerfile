@@ -3,6 +3,8 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 WORKDIR /code
 COPY requirements.txt /code/
+RUN sudo apt-get update
+RUN sudo apt-get upgrade -y
 RUN sudo apt-get install -y supervisor
 RUN sudo apt-get install -y nginx
 RUN sudo apt-get install python3 virtualenv
