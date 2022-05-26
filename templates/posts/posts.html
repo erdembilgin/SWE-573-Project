@@ -31,6 +31,8 @@ Posts
 </form>
 <br><br>
 
+<p>{{emptymsg}}</p>
+
 <div class="row">
   {% for post in posts %}
   <div class="card mt-3 " style="width: 18rem;">
@@ -44,6 +46,8 @@ Posts
     <div class="card-body">
       <h5 class="card-title"><a href="/posts/postdetail/{{post.id}}" target="_blank">{{post.title}}</a></h5>
       <p class="card-text">{{post.description}}</p>
+      <p class="card-text">creator:{{post.user}}</p>
+      
     </div>
 
   </div>

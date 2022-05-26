@@ -26,7 +26,7 @@ Posts
 
 <br><br>
 
-<h4>Comments</h4>
+<h4 class="ms-4">Comments</h4>
 {% for comment in comments %}
 <div class="border border-2 position-relative">
     <div class="ps-3">
@@ -56,14 +56,16 @@ Posts
 
 <form method="post">
     {% csrf_token %}
-    <div class="form-outline mb-4 w-25 p-3">
+    <div class="form-outline w-25 p-3">
         <label class="form-label" for="form1Example1">Comment</label>
         <textarea name="newcomment" id="" cols="100" rows="10"></textarea>
 
     </div>
 
+    <div class="mb-4">
     <!-- Submit button -->
-    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    <button type="submit" class="btn btn-primary btn-block ms-4">Submit</button>
+</div>
 </form>
 
 {% endblock %}

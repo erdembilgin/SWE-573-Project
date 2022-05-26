@@ -26,7 +26,9 @@ class HomeView(View):
         if request.user.is_authenticated:
             search_word = request.POST['searchspaces']
             context = dict()
-            context['spaces'] = Space.objects.filter(title=search_word)
+            context['spaces'] = Space.objects.filter(title__contains=search_word)
+            if not context['spaces'].exists():
+                context['emptymsg'] = "No space could be found"
             return render(request, self.template_name, context)    
         
         return redirect("/")

@@ -11,9 +11,11 @@ Login
 {% block content %}
 
 
+
     <center>
         <p class="text-danger"">{{error}}</p>
-    <form method="post">
+        <p class="text-danger"">{{msg}}</p>
+    <form method="post" action="/">
         {% csrf_token %}
         <!-- Email input -->
         <div class="form-outline mb-4 w-25 p-3">

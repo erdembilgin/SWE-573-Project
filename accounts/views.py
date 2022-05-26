@@ -85,7 +85,9 @@ class ChangePassword(View):
         if request.user.check_password(oldpwd):
             request.user.set_password(newpwd)
             request.user.save()
-            return redirect("/profile")
+            context = dict()
+            context['msg'] = "Please enter your email and password again"
+            return render(request, "accounts/login.html", context)
         context = dict()
         context['error'] = "old password was incorrect"
         return render(request, self.template_name, context)

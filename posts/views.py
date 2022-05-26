@@ -36,8 +36,10 @@ class ListPosts(View):
             search_word = request.POST['searchposts']
             context = dict()
             print("this is space id ", spaceid)
-            context['posts'] = Post.objects.filter(title=search_word, space=spaceid)
+            context['posts'] = Post.objects.filter(title__contains=search_word, space=spaceid)
             spaceuser = Space.objects.get(id=spaceid).user.all()
+            if not context['posts'].exists():
+                context['emptymsg'] = "No post could be found"
             if request.user in spaceuser:
                 context['button'] = True
                 context['spaceid'] = spaceid
