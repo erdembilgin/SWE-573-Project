@@ -22,15 +22,15 @@ Posts
       <div class="col-sm">
         <br>
         <button type="submit" class="btn btn-primary btn-block mt-2">Search</button>
-        
+
       </div>
       <div class="col-sm pt-4 end-0">
         <h6>Common tags:</h6>
         <p>
-          {% for tag in space.tags_as_list %} 
-              {{ tag }}{% if not forloop.last %},{% endif %}
+          {% for tag in space.tags_as_list %}
+          {{ tag }}{% if not forloop.last %},{% endif %}
           {% endfor %}
-          </p>
+        </p>
       </div>
     </div>
   </div>
@@ -43,31 +43,32 @@ Posts
 
 <p>{{emptymsg}}</p>
 
-<div class="row">
-  {% for post in posts %}
-  <div class="card mt-3 " style="width: 18rem;">
-    <img src="/media/{{post.image}}" class="card-img-top" alt="">
-    {% if post.video %}
-    <video width="320" height="240" controls class="card-img-top">
-      <source src="/media/{{post.video}}" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    {% endif %}
-    <div class="card-body">
-      <h5 class="card-title"><a href="/posts/postdetail/{{post.id}}" target="_blank">{{post.title}}</a></h5>
-      <p class="card-text">{{post.description|slice:100}}...</p>
-      <p class="card-text">creator:{{post.user}}</p>
-      {% if user == post.user %}
-
-      <a href="/posts/delete-post/{{post.id}}">Delete</a>
+<div class="ms-5">
+  <div class="row">
+    {% for post in posts %}
+    <div class="card mt-3 " style="width: 18rem;">
+      <img src="/media/{{post.image}}" class="card-img-top" alt="">
+      {% if post.video %}
+      <video width="320" height="240" controls class="card-img-top">
+        <source src="/media/{{post.video}}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
       {% endif %}
+      <div class="card-body">
+        <h5 class="card-title"><a href="/posts/postdetail/{{post.id}}" target="_blank">{{post.title}}</a></h5>
+        <p class="card-text">{{post.description|slice:100}}...</p>
+        <p class="card-text">creator:{{post.user}}</p>
+        {% if user == post.user %}
+
+        <a href="/posts/delete-post/{{post.id}}">Delete</a>
+        {% endif %}
+
+      </div>
 
     </div>
-
+    {% endfor %}
   </div>
-  {% endfor %}
 </div>
-
 <br><br>
 
 <center>
