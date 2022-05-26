@@ -14,4 +14,7 @@ class Space(models.Model):
     tags = models.TextField(null=True, blank=True)
     user = models.ManyToManyField(User, null=True, blank=True)
     
+    def tags_as_list(self):
+        return self.tags.split(',')
+    
 

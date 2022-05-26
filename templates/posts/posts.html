@@ -14,7 +14,7 @@ Posts
   {% csrf_token %}
 
   <div class="container ">
-    <div class="row form-outline mb-4 w-50">
+    <div class="row form-outline mb-4 w-80">
       <div class="col-sm">
         <label class="form-label" for="form1Example1">Search Post:</label>
         <input type="text" id="form1Example1" name="searchposts" class="form-control" />
@@ -22,13 +22,23 @@ Posts
       <div class="col-sm">
         <br>
         <button type="submit" class="btn btn-primary btn-block mt-2">Search</button>
+        
+      </div>
+      <div class="col-sm pt-4 end-0">
+        <h6>Common tags:</h6>
+        <p>
+          {% for tag in space.tags_as_list %} 
+              {{ tag }}{% if not forloop.last %},{% endif %}
+          {% endfor %}
+          </p>
       </div>
     </div>
   </div>
-  
+
 
 
 </form>
+
 <br><br>
 
 <p>{{emptymsg}}</p>
@@ -51,7 +61,7 @@ Posts
 
       <a href="/posts/delete-post/{{post.id}}">Delete</a>
       {% endif %}
-      
+
     </div>
 
   </div>

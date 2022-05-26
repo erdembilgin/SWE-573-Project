@@ -53,10 +53,16 @@ class RegisterView(View):
         nickname = request.POST['nickname']
         email = request.POST['email']
         pwd = request.POST['pwd']
-        user = User.objects.create(email=email, nick_name=nickname, profile_photo=image)
-        user.set_password(pwd)
-        user.save()
-        return redirect("/")
+        try:
+            
+            user = User.objects.create(email=email, nick_name=nickname, profile_photo=image)
+            user.set_password(pwd)
+            user.save()
+            return redirect("/")
+        except Exception as e:
+            context = dict()
+            context['warning'] = "User with these credentials already exists"
+            return render(request, self.template_name, context)
     
 class Profile(View):
     template_name = "accounts/profile.html"
