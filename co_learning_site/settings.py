@@ -88,9 +88,9 @@ DATABASES = {
     # }
     'default': {
         'ENGINE': "django.db.backends.postgresql_psycopg2",
-        'NAME': "co-learning",
-        'USER': "postgres",
-        'PASSWORD': "konoha09",
+        'NAME': "django_db",
+        'USER': "python_dev",
+        'PASSWORD': "aqwe123",
         'HOST': "localhost",
         'PORT': 5432,
     },
