@@ -28,22 +28,24 @@ Sign Up
 
 </center>
 
-<div class="row">
-  {% for space in spaces %}
-  <div class="card mt-3 " style="width: 18rem;">
-    <img src="/media/{{space.banner}}" class="card-img-top" alt="">
-    <div class="card-body">
-      <h5 class="card-title"><a href="/posts/{{space.id}}/">{{space.title}}</a></h5>
-      {% if user in space.user.all %}
-      <a href="/spaces/leavespace/{{space.id}}" class="card-title">Leave Space</a>
-      {% else %}
-      <a href="/spaces/joinspace/{{space.id}}" class="card-title">Join Space</a>
-      {% endif %}
+<div class="ms-5">
+  <div class="row">
+    {% for space in spaces %}
+    <div class="card mt-3 " style="width: 18rem;">
+      <img src="/media/{{space.banner}}" class="card-img-top" alt="">
+      <div class="card-body">
+        <h5 class="card-title"><a href="/posts/{{space.id}}/">{{space.title}}</a></h5>
+        {% if user in space.user.all %}
+        <a href="/spaces/leavespace/{{space.id}}" class="card-title">Leave Space</a>
+        {% else %}
+        <a href="/spaces/joinspace/{{space.id}}" class="card-title">Join Space</a>
+        {% endif %}
+      </div>
     </div>
+
+
+    {% endfor %}
   </div>
-
-
-  {% endfor %}
 </div>
 
 
