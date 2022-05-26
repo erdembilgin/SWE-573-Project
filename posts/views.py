@@ -1,4 +1,3 @@
-from xml.etree.ElementTree import Comment
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views import View
@@ -116,4 +115,15 @@ class CreatePost(View):
         post = Post.objects.create(title=title, description=description, image=img, 
                                    video=video, space=space, user=request.user)
         return redirect(f"/posts/{spaceid}")
+    
+class DeletePost(View):
+    
+    def get(self, request, pk):
+        if request.user.is_authenticated:
+            post = Post.objects.get(id=pk)
+            spaceid = post.space.id
+            post.delete()
+            return redirect(f"/posts/{spaceid}")
+        return redirect("/")
+        
         

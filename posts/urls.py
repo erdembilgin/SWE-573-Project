@@ -5,7 +5,8 @@ from .views import (
     PostDetail,
     CommentLike,
     CommentDislike,
-    CreatePost
+    CreatePost,
+    DeletePost
 )
 
 urlpatterns = [
@@ -14,4 +15,5 @@ urlpatterns = [
     path("like/<int:pk>/", CommentLike.as_view(), name="comment_like"),
     path("dislike/<int:pk>/", CommentDislike.as_view(), name="comment_dislike"),
     path("create-post/<int:spaceid>/", CreatePost.as_view(), name="create_post"),
+    path("delete-post/<int:pk>/", DeletePost.as_view(), name="delete_post"),
 ]
